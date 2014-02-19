@@ -1,0 +1,193 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://friend-finder-engine-teo.appspot.com/_ah/api",
+  "name" : "dataentityendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://friend-finder-engine-teo.appspot.com/_ah/spi",
+    "deadline" : 10.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "friendidentifier.teo",
+  "ownerName" : "friendidentifier.teo",
+  "methods" : {
+    "dataentityendpoint.getDataEntity" : {
+      "path" : "dataentity/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "teo.friendidentifier.DataEntityEndpoint.getDataEntity",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "dataentityendpoint.insertDataEntity" : {
+      "path" : "dataentity",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "teo.friendidentifier.DataEntityEndpoint.insertDataEntity",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "dataentityendpoint.updateDataEntity" : {
+      "path" : "dataentity",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "teo.friendidentifier.DataEntityEndpoint.updateDataEntity",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "dataentityendpoint.listDataEntity" : {
+      "path" : "dataentity",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "teo.friendidentifier.DataEntityEndpoint.listDataEntity",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "dataentityendpoint.removeDataEntity" : {
+      "path" : "dataentity/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "teo.friendidentifier.DataEntityEndpoint.removeDataEntity",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "DataEntity" : {
+        "id" : "DataEntity",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "owner" : {
+            "type" : "string"
+          },
+          "friend" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CollectionResponse_DataEntity" : {
+        "id" : "CollectionResponse_DataEntity",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "DataEntity"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "teo.friendidentifier.DataEntityEndpoint.getDataEntity" : {
+        "response" : {
+          "$ref" : "DataEntity"
+        }
+      },
+      "teo.friendidentifier.DataEntityEndpoint.insertDataEntity" : {
+        "request" : {
+          "$ref" : "DataEntity"
+        },
+        "response" : {
+          "$ref" : "DataEntity"
+        }
+      },
+      "teo.friendidentifier.DataEntityEndpoint.updateDataEntity" : {
+        "request" : {
+          "$ref" : "DataEntity"
+        },
+        "response" : {
+          "$ref" : "DataEntity"
+        }
+      },
+      "teo.friendidentifier.DataEntityEndpoint.listDataEntity" : {
+        "response" : {
+          "$ref" : "CollectionResponse_DataEntity"
+        }
+      },
+      "teo.friendidentifier.DataEntityEndpoint.removeDataEntity" : {
+      }
+    }
+  }
+}
